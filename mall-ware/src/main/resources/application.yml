@@ -1,0 +1,42 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+    httptrace:
+      enabled: true
+  server:
+    port: 8196
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 11000
+
+spring:
+  datasource:
+    username: root
+    password: 45185947wuyi-
+    url: jdbc:mysql://localhost:3306/mall_wms
+    driver-class-name: com.mysql.jdbc.Driver
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: mall-ware
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+logging:
+  level:
+    io.github.imaple: debug

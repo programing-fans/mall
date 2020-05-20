@@ -1,0 +1,29 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+    httptrace:
+      enabled: true
+  server:
+    port: 8099
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alicloud:
+      access-key: LTAI4FwvfjSycd1APnuG9bjj
+      secret-key: O6xaxyiWfSIitcOkSuK27ju4hXT5Hl
+      oss:
+        endpoint: oss-cn-beijing.aliyuncs.com
+        bucket: mall-hello
+
+  application:
+    name: mall-third-party
+
+server:
+  port: 30000

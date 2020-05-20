@@ -1,0 +1,39 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+    httptrace:
+      enabled: true
+  server:
+    port: 8898
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  datasource:
+    username: root
+    password: 45185947wuyi-
+    url: jdbc:mysql://localhost:3306/mall_pms
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 10000
+logging:
+  level:
+    io.github.imaple.mall: debug
+
