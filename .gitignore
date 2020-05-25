@@ -20,3 +20,8 @@ buildNumber.properties
 
 **/.gitignore
 **/*.iml
+
+nacos/data/
+nacos/logs
+nacos/bin/logs/
+nacos/bin/*.log

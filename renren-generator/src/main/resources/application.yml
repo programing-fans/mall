@@ -1,5 +1,17 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+    httptrace:
+      enabled: true
+  server:
+    port: 8098
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 server:
-  port: 6000
+  port: 8087
 
 # mysql
 spring:
