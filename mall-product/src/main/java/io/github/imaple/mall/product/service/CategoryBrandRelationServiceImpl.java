@@ -1,4 +1,4 @@
-package io.github.imaple.mall.product.service.impl;
+package io.github.imaple.mall.product.service;
 
 import io.github.imaple.mall.product.dao.BrandDao;
 import io.github.imaple.mall.product.dao.CategoryDao;
@@ -80,12 +80,10 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
     public List<BrandEntity> getBrandsByCatId(Long catId) {
 
         List<CategoryBrandRelationEntity> catelogId = relationDao.selectList(new QueryWrapper<CategoryBrandRelationEntity>().eq("catelog_id", catId));
-        List<BrandEntity> collect = catelogId.stream().map(item -> {
+        return catelogId.stream().map(item -> {
             Long brandId = item.getBrandId();
-            BrandEntity byId = brandService.getById(brandId);
-            return byId;
+            return brandService.getById(brandId);
         }).collect(Collectors.toList());
-        return collect;
     }
 
 }

@@ -1,4 +1,4 @@
-package io.github.imaple.mall.product.service.impl;
+package io.github.imaple.mall.product.service;
 
 import io.github.imaple.mall.product.service.CategoryBrandRelationService;
 import io.github.imaple.mall.product.dao.BrandDao;

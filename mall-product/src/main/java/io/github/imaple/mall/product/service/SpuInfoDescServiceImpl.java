@@ -1,4 +1,4 @@
-package io.github.imaple.mall.product.service.impl;
+package io.github.imaple.mall.product.service;
 
 import io.github.imaple.mall.product.dao.SpuInfoDescDao;
 import io.github.imaple.mall.product.entity.SpuInfoDescEntity;

@@ -1,10 +1,16 @@
 package io.github.imaple.mall.product;
 
+import io.github.imaple.common.utils.R;
+import io.github.imaple.mall.product.entity.CategoryEntity;
+import io.github.imaple.mall.product.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 
 /**
@@ -16,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MallProductApplicationTests {
-//
+    //
 //    @Autowired
 //    BrandService brandService;
 //
@@ -29,7 +35,15 @@ public class MallProductApplicationTests {
 //        Long[] catelogPath = categoryService.findCatelogPath(225L);
 //        log.info("完整路径：{}",Arrays.asList(catelogPath));
 //    }
+    @Autowired
+    private CategoryService categoryService;
 
+    @Test
+    public void testListWithTree() {
+        List<CategoryEntity> list = categoryService.listWithTree();
+        R r = R.ok().put("data", list);
+        System.out.println(r);
+    }
 
     @Test
     public void contextLoads() {

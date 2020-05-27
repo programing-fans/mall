@@ -101,19 +101,10 @@ public class PurchaseServiceImpl extends ServiceImpl<PurchaseDao, PurchaseEntity
     @Override
     public void received(List<Long> ids) {
         //1、确认当前采购单是新建或者已分配状态
-        List<PurchaseEntity> collect = ids.stream().map(id -> {
-            PurchaseEntity byId = this.getById(id);
-            return byId;
-        }).filter(item -> {
-            if (item.getStatus() == WareConstant.PurchaseStatusEnum.CREATED.getCode() ||
-                    item.getStatus() == WareConstant.PurchaseStatusEnum.ASSIGNED.getCode()) {
-                return true;
-            }
-            return false;
-        }).map(item->{
+        List<PurchaseEntity> collect = ids.stream().map(this::getById).filter(item -> item.getStatus() == WareConstant.PurchaseStatusEnum.CREATED.getCode() ||
+                item.getStatus() == WareConstant.PurchaseStatusEnum.ASSIGNED.getCode()).peek(item->{
             item.setStatus(WareConstant.PurchaseStatusEnum.RECEIVE.getCode());
             item.setUpdateTime(new Date());
-            return item;
         }).collect(Collectors.toList());
 
         //2、改变采购单的状态

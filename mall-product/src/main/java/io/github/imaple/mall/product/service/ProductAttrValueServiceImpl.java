@@ -1,4 +1,4 @@
-package io.github.imaple.mall.product.service.impl;
+package io.github.imaple.mall.product.service;
 
 import io.github.imaple.mall.product.dao.ProductAttrValueDao;
 import io.github.imaple.mall.product.entity.ProductAttrValueEntity;
@@ -49,10 +49,7 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         this.baseMapper.delete(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id",spuId));
 
 
-        List<ProductAttrValueEntity> collect = entities.stream().map(item -> {
-            item.setSpuId(spuId);
-            return item;
-        }).collect(Collectors.toList());
+        List<ProductAttrValueEntity> collect = entities.stream().peek(item -> item.setSpuId(spuId)).collect(Collectors.toList());
         this.saveBatch(collect);
     }
 
